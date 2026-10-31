@@ -1,13 +1,13 @@
 # EXPERIMENT-02-INTERFACING-A-DIGITAL-INPUT-OUTPUT-TO-IOT-DEVELOPMENT-BOARD
 
 
-**DATE:**
+**DATE: 31.10.2026**
 
-**NAME:**
+**NAME: YUVASREE S**
 
-**ROLL NO:**
+**ROLL NO: 212225230314**
 
-**DEPARTMENT:**
+**DEPARTMENT: B.Tech(AI&DS)**
 
 ## Aim
 
@@ -102,10 +102,51 @@ IR technology is used in a wide range of wireless applications which includes re
 ## STM 32 CUBE PROGRAM
 
 ```
-// Your STM 32 CUBE Program code here
+#include "main.h"
+#include <stdbool.h>
+bool IRSENSOR; 
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+
+           int main(void)
+{
+  
+  HAL_Init();
+  
+  SystemClock_Config();
+
+  MX_GPIO_Init();
+    
+  while (1)
+  {
+	  IRPAIR();
+  }
+}
+
+void IRPAIR()
+{
+	IRSENSOR = HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_4);
+	if(IRSENSOR == 0)
+	{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+		HAL_Delay(2000);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+		HAL_Delay(2000);
+	}
+	else
+	{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+		HAL_Delay(2000);
+	}
+}
+
 ```
 
 ## OUTPUT
+<img width="1920" height="1080" alt="Screenshot 2026-10-31 090546" src="https://github.com/user-attachments/assets/67042e63-2fff-4f95-a664-a338bfd477d7" />
+<img width="1600" height="1200" alt="WhatsApp Image 2026-10-31 at 12 30 11 PM" src="https://github.com/user-attachments/assets/96d9ba88-c5e0-437a-b7fe-abfbe3ab81dd" />
+<img width="1200" height="1600" alt="WhatsApp Image 2026-10-31 at 12 30 10 PM" src="https://github.com/user-attachments/assets/0e186b1a-084a-420b-b286-5c53d0609fbd" />
+
 
 ## Result
 
